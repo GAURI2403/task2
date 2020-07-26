@@ -1,6 +1,6 @@
 provider "aws" {
   region= "ap-south-1"
-  profile = "amol"
+  profile = "gauri"
 }
 ##### Creating a Security Group#####
 resource "aws_security_group" "allow_http" {
@@ -49,7 +49,7 @@ connection {
     type     = "ssh"
     user     = "ec2-user"
     port     =  22
-    private_key = file("C:/Users/Amol/Desktop/task2/deployer-key.pem")
+    private_key = file("C:/Users/Gauri/Desktop/task2/deployer-key.pem")
     host     = aws_instance.web.public_ip
   }
     inline = [
@@ -80,14 +80,14 @@ resource "null_resource" "nullremote3"  {
     type     = "ssh"
     user     = "ec2-user"
     port     =  22
-    private_key = file("C:/Users/Amol/Desktop/task2/deployer-key.pem") 
+    private_key = file("C:/Users/Gauri/Desktop/task2/deployer-key.pem") 
     host     = aws_instance.web.public_ip
   }
 provisioner "remote-exec" {
   inline = [
       "sudo mount -t nfs4 ${aws_efs_mount_target.alpha.ip_address}:/ /var/www/html/", 
       "sudo rm -rf /var/www/html/*",
-      "sudo git clone https://github.com/amolpattill/Terraform.git  /var/www/html/"
+      "sudo git clone https://github.com/Gauri2403/task2.git  /var/www/html/"
   ]
 }
 }
