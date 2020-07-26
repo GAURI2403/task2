@@ -49,7 +49,7 @@ connection {
     type     = "ssh"
     user     = "ec2-user"
     port     =  22
-    private_key = file("C:/Users/Gauri/Desktop/task2/deployer-key.pem")
+    private_key = file("C:/Users/Gauri/Desktop/task2/task2.pem")
     host     = aws_instance.web.public_ip
   }
     inline = [
